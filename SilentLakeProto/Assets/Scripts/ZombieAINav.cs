@@ -6,7 +6,10 @@ using UnityEngine.AI;
 public class ZombieAINav : MonoBehaviour
 {
 
-<<<<<<< HEAD
+    public NavMeshAgent agent;
+    public Transform Player;
+    public GameObject Chase;
+
    // public Transform Player;
     NavMeshAgent agent;
     Vector3 target;
@@ -22,25 +25,28 @@ public class ZombieAINav : MonoBehaviour
         else
         {
             SetRandomDestination();
-=======
+
     void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player"))
         {
+
             agent.SetDestination(Player.position);
->>>>>>> ff49d9167c1c59f1934e43ef5dd28afa0d5f06a3
+
+            Chase.SetActive(true);
+
         }
     }
 
     void Update()
     {
-<<<<<<< HEAD
+
         if (agent.remainingDistance < 0.5f)
         {
             SetRandomDestination();
         }
 
-       // agent.SetDestination(Player.position);
+
     }
 
     void SetRandomDestination()
@@ -69,8 +75,11 @@ public class ZombieAINav : MonoBehaviour
 
 
         return randomPoint;
-=======
 
->>>>>>> ff49d9167c1c59f1934e43ef5dd28afa0d5f06a3
+        if (Chase.activeSelf)
+        {
+            agent.SetDestination(Player.position);
+        }
+
     }
 }
