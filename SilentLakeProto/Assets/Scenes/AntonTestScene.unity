@@ -14270,6 +14270,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   agent: {fileID: 883388771}
   Player: {fileID: 1907666006}
+  Chase: {fileID: 1358455712}
 --- !u!195 &883388771
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -14280,7 +14281,7 @@ NavMeshAgent:
   m_Enabled: 1
   m_AgentTypeID: 0
   m_Radius: 0.5
-  m_Speed: 10
+  m_Speed: 6
   m_Acceleration: 80
   avoidancePriority: 50
   m_AngularSpeed: 100
@@ -22442,6 +22443,37 @@ MonoBehaviour:
   m_SelectedFaces: 
   m_SelectedEdges: []
   m_SelectedVertices: 
+--- !u!1 &1358455712
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1358455713}
+  m_Layer: 0
+  m_Name: ZombieChase
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!4 &1358455713
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1358455712}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -69.85847, y: 17.963041, z: 29.71118}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!43 &1359196505
 Mesh:
   m_ObjectHideFlags: 0
@@ -46047,3 +46079,4 @@ SceneRoots:
   - {fileID: 37193407}
   - {fileID: 1521025959}
   - {fileID: 2042942563}
+  - {fileID: 1358455713}

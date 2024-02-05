@@ -7,17 +7,21 @@ public class ZombieAINav : MonoBehaviour
 {
     public NavMeshAgent agent;
     public Transform Player;
+    public GameObject Chase;
 
     void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player"))
         {
-            agent.SetDestination(Player.position);
+            Chase.SetActive(true);
         }
     }
 
     void Update()
     {
-
+        if (Chase.activeSelf)
+        {
+            agent.SetDestination(Player.position);
+        }
     }
 }
