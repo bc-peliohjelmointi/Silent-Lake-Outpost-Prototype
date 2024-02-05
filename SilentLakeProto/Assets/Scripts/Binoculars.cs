@@ -17,6 +17,12 @@ public class Binoculars : MonoBehaviour
     public bool isZoomed;
 
     [SerializeField] Texture2D binocImage;
+    Tasks taskScript;
+
+    private void Start()
+    {
+        taskScript = GetComponent<Tasks>();
+    }
 
     private void Update()
     {
@@ -25,6 +31,7 @@ public class Binoculars : MonoBehaviour
         if(isZoomed)
         {
             ScrollWheelZoom();
+            taskScript.SpotAnimal();
         }
 
         else 
