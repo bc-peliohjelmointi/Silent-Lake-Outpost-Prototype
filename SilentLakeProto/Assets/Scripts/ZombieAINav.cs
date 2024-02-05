@@ -2,11 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
-using UnityEngine.UI;
 
 public class ZombieAINav : MonoBehaviour
 {
 
+<<<<<<< HEAD
    // public Transform Player;
     NavMeshAgent agent;
     Vector3 target;
@@ -22,11 +22,19 @@ public class ZombieAINav : MonoBehaviour
         else
         {
             SetRandomDestination();
+=======
+    void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("Player"))
+        {
+            agent.SetDestination(Player.position);
+>>>>>>> ff49d9167c1c59f1934e43ef5dd28afa0d5f06a3
         }
     }
 
     void Update()
     {
+<<<<<<< HEAD
         if (agent.remainingDistance < 0.5f)
         {
             SetRandomDestination();
@@ -61,5 +69,8 @@ public class ZombieAINav : MonoBehaviour
 
 
         return randomPoint;
+=======
+
+>>>>>>> ff49d9167c1c59f1934e43ef5dd28afa0d5f06a3
     }
 }
