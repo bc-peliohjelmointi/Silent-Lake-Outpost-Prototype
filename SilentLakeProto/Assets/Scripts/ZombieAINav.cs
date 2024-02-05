@@ -10,8 +10,8 @@ public class ZombieAINav : MonoBehaviour
     public Transform Player;
     public GameObject Chase;
 
-   // public Transform Player;
-    NavMeshAgent agent;
+    // public Transform Player;
+   
     Vector3 target;
 
     void Start()
@@ -26,59 +26,62 @@ public class ZombieAINav : MonoBehaviour
         {
             SetRandomDestination();
 
-    void OnTriggerEnter(Collider other)
-    {
-        if (other.CompareTag("Player"))
-        {
-
-            agent.SetDestination(Player.position);
-
-            Chase.SetActive(true);
-
-        }
-    }
-
-    void Update()
-    {
-
-        if (agent.remainingDistance < 0.5f)
-        {
-            SetRandomDestination();
-        }
-
-
-    }
-
-    void SetRandomDestination()
-    {
-        Vector3 randomPoint = GetRandomPointInNavMesh();
-        agent.SetDestination(randomPoint);
-    }
-
-    Vector3 GetRandomPointInNavMesh()
-    {
-        Vector3 randomPoint = Vector3.zero;
-
-        NavMeshHit hit;
-        for (int i = 0; i < 30; i++)
-        {
-            float randomX = Random.Range(-500f, 500f);
-            float randomZ = Random.Range(-500f, 500f);
-
-            randomPoint = new Vector3(transform.position.x + randomX, transform.position.y, transform.position.z + randomZ);
-
-            if (NavMesh.SamplePosition(randomPoint, out hit, 1.0f, NavMesh.AllAreas))
+            void OnTriggerEnter(Collider other)
             {
-                return hit.position;
+                if (other.CompareTag("Player"))
+                {
+
+                    agent.SetDestination(Player.position);
+
+                    Chase.SetActive(true);
+
+                }
             }
-        }
+
+            void Update()
+            {
+
+                if (agent.remainingDistance < 0.5f)
+                {
+                    SetRandomDestination();
+                }
 
 
-        return randomPoint;
+            }
 
-        if (Chase.activeSelf)
-        {
-            agent.SetDestination(Player.position);
+            void SetRandomDestination()
+            {
+                Vector3 randomPoint = GetRandomPointInNavMesh();
+                agent.SetDestination(randomPoint);
+            }
+
+            Vector3 GetRandomPointInNavMesh()
+            {
+                Vector3 randomPoint = Vector3.zero;
+
+                NavMeshHit hit;
+                for (int i = 0; i < 30; i++)
+                {
+                    float randomX = Random.Range(-500f, 500f);
+                    float randomZ = Random.Range(-500f, 500f);
+
+                    randomPoint = new Vector3(transform.position.x + randomX, transform.position.y, transform.position.z + randomZ);
+
+                    if (NavMesh.SamplePosition(randomPoint, out hit, 1.0f, NavMesh.AllAreas))
+                    {
+                        return hit.position;
+                    }
+                }
+
+
+                return randomPoint;
+
+                if (Chase.activeSelf)
+                {
+                    agent.SetDestination(Player.position);
+                }
+
+            }
         }
 
     }
