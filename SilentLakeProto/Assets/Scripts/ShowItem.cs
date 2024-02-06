@@ -10,6 +10,9 @@ public class ShowItem : MonoBehaviour
     [SerializeField] GameObject flashLight;
     [SerializeField] Light flashLightSpotLight;
     [SerializeField] GameObject binocs;
+    [SerializeField] GameObject propBinocs;
+    [SerializeField] GameObject propFlashlight;
+    [SerializeField] GameObject propCamera;
 
     [SerializeField] AudioSource audioSource;
     [SerializeField] AudioSource flashLightSource;
@@ -81,63 +84,70 @@ public class ShowItem : MonoBehaviour
 
     void CameraShow()
     {
-        if (!cameraObject.activeSelf && !flashLight.activeSelf && !binocs.activeSelf && !binocScript.isZoomed && Input.GetKeyDown(KeyCode.C))
+        if (!propCamera.activeSelf)
         {
-            cameraObject.SetActive(true);
-        }
+            if (!cameraObject.activeSelf && !flashLight.activeSelf && !binocs.activeSelf && !binocScript.isZoomed && Input.GetKeyDown(KeyCode.C))
+            {
+                cameraObject.SetActive(true);
+            }
 
-        else if (!cameraObject.activeSelf && (flashLight.activeSelf || binocs.activeSelf) && Input.GetKeyDown(KeyCode.C))
-        {
-            flashLight.SetActive(false);
-            binocs.SetActive(false);
-            cameraObject.SetActive(true);
-        }
+            else if (!cameraObject.activeSelf && (flashLight.activeSelf || binocs.activeSelf) && Input.GetKeyDown(KeyCode.C))
+            {
+                flashLight.SetActive(false);
+                binocs.SetActive(false);
+                cameraObject.SetActive(true);
+            }
 
-        else if (cameraObject.activeSelf && Input.GetKeyDown(KeyCode.C))
-        {
-            cameraObject.SetActive(false);
+            else if (cameraObject.activeSelf && Input.GetKeyDown(KeyCode.C))
+            {
+                cameraObject.SetActive(false);
+            }
         }
     }
 
     void FlashLightShow()
     {
-        if (!flashLight.activeSelf && !cameraObject.activeSelf && !binocs.activeSelf && !binocScript.isZoomed && Input.GetKeyDown(KeyCode.F))
+        if (!propFlashlight.activeSelf)
         {
-            flashLight.SetActive(true);
-        }
+            if (!flashLight.activeSelf && !cameraObject.activeSelf && !binocs.activeSelf && !binocScript.isZoomed && Input.GetKeyDown(KeyCode.F))
+            {
+                flashLight.SetActive(true);
+            }
 
-        else if (!flashLight.activeSelf && (cameraObject.activeSelf || binocs.activeSelf) && Input.GetKeyDown(KeyCode.F))
-        {
-            cameraObject.SetActive(false);
-            binocs.SetActive(false);
-            flashLight.SetActive(true);
-        }
+            else if (!flashLight.activeSelf && (cameraObject.activeSelf || binocs.activeSelf) && Input.GetKeyDown(KeyCode.F))
+            {
+                cameraObject.SetActive(false);
+                binocs.SetActive(false);
+                flashLight.SetActive(true);
+            }
 
-        else if (flashLight.activeSelf && Input.GetKeyDown(KeyCode.F))
-        {
-            flashLight.SetActive(false);
+            else if (flashLight.activeSelf && Input.GetKeyDown(KeyCode.F))
+            {
+                flashLight.SetActive(false);
+            }
         }
     }
 
     void BinocularsShow()
     {
-        if (!binocs.activeSelf && !cameraObject.activeSelf && !flashLight.activeSelf && !binocScript.isZoomed && Input.GetKeyDown(KeyCode.B))
+        if(!propBinocs.activeSelf)
         {
-            binocs.SetActive(true);
-        }
+            if (!binocs.activeSelf && !cameraObject.activeSelf && !flashLight.activeSelf && !binocScript.isZoomed && Input.GetKeyDown(KeyCode.B))
+            {
+                binocs.SetActive(true);
+            }
 
-        else if (!binocs.activeSelf && (cameraObject.activeSelf || flashLight.activeSelf) && Input.GetKeyDown(KeyCode.B))
-        {
-            cameraObject.SetActive(false);
-            flashLight.SetActive(false);
-            binocs.SetActive(true);
-        }
+            else if (!binocs.activeSelf && (cameraObject.activeSelf || flashLight.activeSelf) && Input.GetKeyDown(KeyCode.B))
+            {
+                cameraObject.SetActive(false);
+                flashLight.SetActive(false);
+                binocs.SetActive(true);
+            }
 
-        else if (binocs.activeSelf && Input.GetKeyDown(KeyCode.B))
-        {
-            binocs.SetActive(false);
+            else if (binocs.activeSelf && Input.GetKeyDown(KeyCode.B))
+            {
+                binocs.SetActive(false);
+            }
         }
-        
     }
-    
 }

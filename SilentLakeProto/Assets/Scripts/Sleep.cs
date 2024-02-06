@@ -10,7 +10,6 @@ public class Sleep : MonoBehaviour
     [SerializeField] GameObject bed;
     [SerializeField] GameObject sleepUI;
     [SerializeField] LayerMask mask;
-    Vector3 mousePos;
     Camera cam;
     [SerializeField] GameObject nightSky;
     [SerializeField] GameObject daySky;
@@ -24,7 +23,7 @@ public class Sleep : MonoBehaviour
 
     private void Update()
     {
-        GoSleep(mousePos, mask, cam, sleepUI, bed);
+        GoSleep(mask, cam, sleepUI, bed);
     }
 
     static async Task Sleeping(GameObject Darkening, GameObject NightSky, GameObject DaySky, GameObject WakingUp)
@@ -50,11 +49,8 @@ public class Sleep : MonoBehaviour
         WakingUp.SetActive(false);
     }
 
-    private void GoSleep(Vector3 pos, LayerMask mask, Camera cam, GameObject UI, GameObject item)
+    private void GoSleep(LayerMask mask, Camera cam, GameObject UI, GameObject item)
     {
-        pos = Input.mousePosition;
-        pos.z = 100f;
-        pos = cam.ScreenToWorldPoint(pos);
         Ray ray = cam.ScreenPointToRay(Input.mousePosition);
         RaycastHit hit;
 

@@ -9,7 +9,6 @@ public class Tasks : MonoBehaviour
     [SerializeField] GameObject[] wolfs;
     [SerializeField] LayerMask mask;
     Camera cam;
-    Vector3 pos;
 
     private void Start()
     {
@@ -19,9 +18,6 @@ public class Tasks : MonoBehaviour
     {
         if(taskBarrier.activeSelf)
         {
-            pos = Input.mousePosition;
-            pos.z = 100f;
-            pos = cam.ScreenToWorldPoint(pos);
             Ray ray = cam.ScreenPointToRay(Input.mousePosition);
             RaycastHit hit;
 

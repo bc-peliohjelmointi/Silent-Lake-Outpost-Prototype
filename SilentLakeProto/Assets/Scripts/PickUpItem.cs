@@ -7,8 +7,8 @@ public class PickUpItem : MonoBehaviour
     [SerializeField] LayerMask mask;
     [SerializeField] GameObject pickUpUI;
     [SerializeField] GameObject item;
+
     Camera cam;
-    Vector3 mousePos;
 
     private void Start()
     {
@@ -17,14 +17,12 @@ public class PickUpItem : MonoBehaviour
 
     private void Update()
     {
-        InteractWithObjects(mousePos, mask, cam, pickUpUI, item);
+        InteractWithObjects(mask, cam, pickUpUI, item);        
     }
 
-    private void InteractWithObjects(Vector3 pos, LayerMask mask, Camera cam, GameObject UI, GameObject item)
+    private void InteractWithObjects(LayerMask mask, Camera cam, GameObject UI, GameObject item)
     {
-        pos = Input.mousePosition;
-        pos.z = 100f;
-        pos = cam.ScreenToWorldPoint(pos);
+        
         Ray ray = cam.ScreenPointToRay(Input.mousePosition);
         RaycastHit hit;
 
