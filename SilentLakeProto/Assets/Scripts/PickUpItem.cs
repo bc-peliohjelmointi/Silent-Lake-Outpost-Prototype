@@ -10,6 +10,17 @@ public class PickUpItem : MonoBehaviour
 
     Camera cam;
 
+    //testit
+    [SerializeField] GameObject binocs;
+    [SerializeField] GameObject flashlight;
+    [SerializeField] GameObject camera;
+    [SerializeField] GameObject cameraUI;
+    [SerializeField] GameObject flashlightUI;
+    [SerializeField] GameObject binocsUI;
+    [SerializeField] LayerMask mask2;
+    [SerializeField] LayerMask mask3;
+    [SerializeField] LayerMask mask4;
+
     private void Start()
     {
         cam = Camera.main;   
@@ -17,7 +28,10 @@ public class PickUpItem : MonoBehaviour
 
     private void Update()
     {
-        InteractWithObjects(mask, cam, pickUpUI, item);        
+        InteractWithObjects(mask, cam, pickUpUI, item);
+        InteractWithObjects(mask2, cam, binocsUI, binocs);
+        InteractWithObjects(mask3, cam, flashlightUI, flashlight);
+        InteractWithObjects(mask4, cam, cameraUI, camera);
     }
 
     private void InteractWithObjects(LayerMask mask, Camera cam, GameObject UI, GameObject item)
@@ -26,7 +40,7 @@ public class PickUpItem : MonoBehaviour
         Ray ray = cam.ScreenPointToRay(Input.mousePosition);
         RaycastHit hit;
 
-        if(Physics.Raycast(ray, out hit, 2, mask)) 
+        if(Physics.Raycast(ray, out hit, 4, mask)) 
         {
             if(hit.collider.gameObject == item)
             {
@@ -41,7 +55,7 @@ public class PickUpItem : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.E))
         {
-            if(Physics.Raycast(ray, out hit, 2, mask))
+            if(Physics.Raycast(ray, out hit, 4, mask))
             {
                 if(hit.collider.gameObject == item)
                 {
