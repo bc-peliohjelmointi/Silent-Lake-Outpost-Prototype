@@ -6,7 +6,8 @@ public class Tasks : MonoBehaviour
 {
     [SerializeField] GameObject taskBarrier;
     [SerializeField] GameObject taskList;
-    [SerializeField] GameObject[] wolfs;
+    [SerializeField] GameObject cannibal;
+    [SerializeField] GameObject dialogueUI;
     [SerializeField] LayerMask mask;
     Camera cam;
 
@@ -16,20 +17,17 @@ public class Tasks : MonoBehaviour
     }
     public void SpotAnimal()
     {
-        if(taskBarrier.activeSelf)
+        if (taskBarrier.activeSelf)
         {
             Ray ray = cam.ScreenPointToRay(Input.mousePosition);
             RaycastHit hit;
-
-            foreach(GameObject wolf in wolfs)
+            if (Physics.Raycast(ray, out hit, 10000, mask))
             {
-                if (Physics.Raycast(ray, out hit, 10000, mask))
+                if (hit.collider.gameObject == cannibal)
                 {
-                    if (hit.collider.gameObject == wolf)
-                    {
-                        taskBarrier.SetActive(false);
-                        taskList.SetActive(false);
-                    }
+                    taskBarrier.SetActive(false);
+                    taskList.SetActive(false);
+                    dialogueUI.SetActive(true);
                 }
             }
         }
