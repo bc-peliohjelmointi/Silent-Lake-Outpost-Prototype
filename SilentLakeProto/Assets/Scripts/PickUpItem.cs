@@ -10,7 +10,6 @@ public class PickUpItem : MonoBehaviour
 
     Camera cam;
 
-    //testit
     [SerializeField] GameObject binocs;
     [SerializeField] GameObject flashlight;
     [SerializeField] GameObject camera;
@@ -20,6 +19,10 @@ public class PickUpItem : MonoBehaviour
     [SerializeField] LayerMask mask2;
     [SerializeField] LayerMask mask3;
     [SerializeField] LayerMask mask4;
+
+    [SerializeField] GameObject binocInstructionUI;
+    [SerializeField] GameObject flashlightInstructionUI;
+    [SerializeField] GameObject cameraInstructionUI;
 
     private void Start()
     {
@@ -60,6 +63,20 @@ public class PickUpItem : MonoBehaviour
                 if(hit.collider.gameObject == item)
                 {
                     item.SetActive(false);
+                    if(item.name == "binoculars")
+                    {
+                        binocInstructionUI.SetActive(true);
+                    }
+
+                    else if (item.name == "Flashlight")
+                    {
+                        flashlightInstructionUI.SetActive(true);
+                    }
+
+                    else if (item.name == "camera")
+                    {
+                        cameraInstructionUI.SetActive(true);
+                    }
                 }
             }
         }

@@ -9,9 +9,10 @@ public class Binoculars : MonoBehaviour
 
     [SerializeField] GameObject binoculars;
     [SerializeField] GameObject crosshair;
+    [SerializeField] GameObject binocInstructionUI;
     [SerializeField] float minZoom = 2f;
     [SerializeField] float maxZoom = 50f;
-    [SerializeField] float sensitivity = 10f;
+    [SerializeField] float sensitivity = 15f;
     private float fov;
 
     public bool isZoomed;
@@ -32,6 +33,7 @@ public class Binoculars : MonoBehaviour
         {
             ScrollWheelZoom();
             taskScript.SpotAnimal();
+            binocInstructionUI.SetActive(false);
         }
 
         else 

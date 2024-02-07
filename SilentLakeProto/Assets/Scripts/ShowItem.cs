@@ -14,6 +14,9 @@ public class ShowItem : MonoBehaviour
     [SerializeField] GameObject propFlashlight;
     [SerializeField] GameObject propCamera;
 
+    [SerializeField] GameObject flashlightInstructionUI;
+    [SerializeField] GameObject cameraInstructionUI;
+
     [SerializeField] AudioSource audioSource;
     [SerializeField] AudioSource flashLightSource;
 
@@ -101,6 +104,7 @@ public class ShowItem : MonoBehaviour
             else if (cameraObject.activeSelf && Input.GetKeyDown(KeyCode.C))
             {
                 cameraObject.SetActive(false);
+                cameraInstructionUI.SetActive(false);
             }
         }
     }
@@ -124,6 +128,7 @@ public class ShowItem : MonoBehaviour
             else if (flashLight.activeSelf && Input.GetKeyDown(KeyCode.F))
             {
                 flashLight.SetActive(false);
+                flashlightInstructionUI.SetActive(false);
             }
         }
     }
