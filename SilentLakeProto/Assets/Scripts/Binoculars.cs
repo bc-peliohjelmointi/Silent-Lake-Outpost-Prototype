@@ -1,6 +1,7 @@
 using Cinemachine;
 using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.CompilerServices;
 using UnityEngine;
 
 public class Binoculars : MonoBehaviour
@@ -13,7 +14,7 @@ public class Binoculars : MonoBehaviour
     [SerializeField] float minZoom = 2f;
     [SerializeField] float maxZoom = 50f;
     [SerializeField] float sensitivity = 15f;
-    private float fov;
+    public float fov;
 
     public bool isZoomed;
 
@@ -32,8 +33,11 @@ public class Binoculars : MonoBehaviour
         if(isZoomed)
         {
             ScrollWheelZoom();
-            taskScript.SpotAnimal();
             binocInstructionUI.SetActive(false);
+            if(fov <= 10)
+            {
+                taskScript.SpotAnimal();
+            }
         }
 
         else 
