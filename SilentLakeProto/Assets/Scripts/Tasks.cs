@@ -7,7 +7,6 @@ public class Tasks : MonoBehaviour
     [SerializeField] GameObject taskBarrier;
     [SerializeField] GameObject taskList;
     [SerializeField] GameObject cannibal;
-    [SerializeField] GameObject dialogueUI;
     [SerializeField] LayerMask mask;
     Camera cam;
 
@@ -27,7 +26,6 @@ public class Tasks : MonoBehaviour
                 {
                     taskBarrier.SetActive(false);
                     taskList.SetActive(false);
-                    dialogueUI.SetActive(true);
                 }
             }
         }
