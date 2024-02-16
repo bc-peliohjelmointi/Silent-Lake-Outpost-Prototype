@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 #if ENABLE_INPUT_SYSTEM
 using UnityEngine.InputSystem;
+using System.Threading.Tasks;
 #endif
 
 namespace StarterAssets
@@ -101,7 +102,7 @@ namespace StarterAssets
             }
         }
 
-        private void Start()
+        private async void Start()
         {
             _controller = GetComponent<CharacterController>();
             animator = GetComponent<Animator>();
@@ -115,6 +116,12 @@ namespace StarterAssets
             // reset our timeouts on start
             _jumpTimeoutDelta = JumpTimeout;
             _fallTimeoutDelta = FallTimeout;
+
+            WakingUp.SetActive(true);
+
+            await Task.Delay(8000);
+
+            WakingUp.SetActive(false);
         }
 
         private void Update()
@@ -126,7 +133,7 @@ namespace StarterAssets
 
         private void LateUpdate()
         {
-            if(!Darkening.activeSelf && !WakingUp.activeSelf)
+            if (!Darkening.activeSelf && !WakingUp.activeSelf)
             {
                 CameraRotation();
             }
